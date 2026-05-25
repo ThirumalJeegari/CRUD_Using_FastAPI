@@ -4,13 +4,9 @@ import pandas as pd
 
 server_url = "http://localhost:8000"
 
-
-
 st.title("CRUD Operations Using API")
 
-
 op = st.sidebar.selectbox("Choose CRUD Operations",["ADD Employee","VIEW Employee","UPDATE Employee","DELETE Employee"])
-
 
 
 if op == "ADD Employee":
@@ -40,8 +36,6 @@ elif op == "VIEW Employee":
         all_emp_details = emp_details["all_emps"]
         pd_df = pd.DataFrame(all_emp_details)
         st.dataframe(pd_df)
-
-
 
 
 elif op == "UPDATE Employee":
@@ -104,12 +98,6 @@ elif op == "UPDATE Employee":
                 if res.status_code == 200:
                     st.success(res.json()["updated_msg"])
                 
-
-
-
-
-
-
     
 elif op == "DELETE Employee":
     st.subheader("Delete The Employee from the data")
@@ -120,13 +108,11 @@ elif op == "DELETE Employee":
     pd_df = pd.DataFrame(all_emp_details)
     st.dataframe(pd_df)
 
-
     id_to_delete_data =   st.number_input("Enter Employee ID to Delete",min_value=1,step=1,format="%d")
     delete_button = st.button("DELETE Employee")
     if delete_button:
         if id_to_delete_data not in pd_df["id"].values:
-            st.error("Employee ID not found Employee Details")
-        
+            st.error("Employee ID not found Employee Details")     
         else: 
             res = requests.delete(f"{server_url}/delete_emp/{id_to_delete_data}")
             if res.status_code == 200:
