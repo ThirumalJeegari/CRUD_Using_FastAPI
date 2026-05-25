@@ -109,5 +109,6 @@ Frontend development using Streamlit
 Database integration with MySQL
 Full-stack Python project structure
 
+
 👨‍💻 Author
-Developed by Thirumal
+Jeegari Thirumal
